@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Email - FongStudio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div class="max-w-4xl mx-auto p-4">
+        <!-- Header -->
+        <div class="text-center mb-12 pt-8">
+            <div class="flex justify-center mb-6">
+                <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-4 rounded-2xl shadow-lg">
+                    <svg class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.44 7.89-4.44M21 8v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8m18 0l-9 5-9-5"/>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="text-5xl font-bold gradient-text mb-4">
+                Generator Alamat Email
+            </h1>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                Buat variasi alamat email dengan mudah untuk berbagai keperluan Anda
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Gmail Info Section -->
+            <div class="bg-white rounded-3xl shadow-xl border border-yellow-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-yellow-400 to-orange-400 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center flex items-center justify-center">
+                        <svg class="h-8 w-8 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                        Info Penting Gmail Dot
+                    </h2>
+                </div>
+                <div class="p-8">
+                    <p class="text-gray-600 text-center mb-6 text-lg">
+                        Semua variasi alamat email Gmail dengan titik (dot) akan masuk ke satu inbox yang sama. Yaitu:
+                    </p>
+                    <div class="flex flex-col items-center space-y-4 mb-6">
+                        <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-xl border-2 border-yellow-300 max-w-xs w-full text-center">
+                            <p class="font-bold text-lg text-gray-800 break-all">terimajalah@gmail.com</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-center mb-8 text-lg">
+                        akan masuk ke inbox yang sama. Anda dapat menggunakan ini untuk melacak sumber email atau mendaftar ke layanan berbeda.
+                    </p>
+                    <div class="flex justify-center">
+                        <button
+                            id="checkInboxBtn"
+                            class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+                        >
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                            <span>Cek Inbox Gmail</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gmail Dot Generator -->
+            <div class="bg-white rounded-3xl shadow-xl border border-blue-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-indigo-500 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center flex items-center justify-center">
+                        <svg class="h-8 w-8 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.44 7.89-4.44M21 8v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8m18 0l-9 5-9-5"/>
+                        </svg>
+                        Generator Gmail Dot
+                    </h2>
+                </div>
+                <div class="p-8">
+                    <p class="text-gray-600 text-center mb-8 text-lg">
+                        Pilih nama pengguna Gmail Anda untuk menghasilkan semua variasi titik.
+                    </p>
+                    <div class="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-4 mb-8">
+                        <select
+                            id="gmailDropdown"
+                            class="flex-1 p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm text-gray-700 w-full bg-white hover:border-blue-300 transition-colors duration-200"
+                        >
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                        <span class="text-xl font-medium text-gray-600 bg-gray-100 px-4 py-2 rounded-lg">@gmail.com</span>
+                        <button
+                            id="generateDotsBtn"
+                            class="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 w-full lg:w-auto flex items-center justify-center space-x-2"
+                        >
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                            <span>Hasilkan Dot</span>
+                        </button>
+                    </div>
+                    <div id="dotResults" class="bg-gray-50 p-6 rounded-2xl border border-gray-200 min-h-[200px] custom-scrollbar max-h-80 overflow-y-auto">
+                        <div class="flex flex-col items-center justify-center py-12">
+                            <svg class="h-12 w-12 text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.44 7.89-4.44M21 8v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8m18 0l-9 5-9-5"/>
+                            </svg>
+                            <p class="text-gray-500 text-center">Hasil akan muncul di sini</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 text-center mt-4">
+                        *Catatan: Semua variasi alamat email Gmail dengan titik (.) akan masuk ke inbox yang sama.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Custom Email Generator -->
+            <div class="bg-white rounded-3xl shadow-xl border border-green-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-green-500 to-emerald-500 p-6">
+                    <h2 class="text-2xl font-bold text-white text-center flex items-center justify-center">
+                        <svg class="h-8 w-8 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Pembuat Alamat Email Kustom & Dot
+                    </h2>
+                </div>
+                <div class="p-8">
+                    <p class="text-gray-600 text-center mb-8 text-lg">
+                        Hasilkan nama pengguna secara acak dan buat variasi alamat email Anda dengan domain kustom pilihan Anda.
+                    </p>
+                    <div class="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-4 mb-8">
+                        <button
+                            id="randomUsernameBtn"
+                            class="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 w-full lg:w-auto flex items-center justify-center space-x-2"
+                        >
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            <span>Acak</span>
+                        </button>
+                        <div id="customUsernameDisplay" class="flex-1 p-4 border-2 border-gray-200 rounded-xl bg-gray-50 text-gray-700 w-full text-center font-mono text-lg font-medium break-all">
+                            <!-- Random username will be displayed here -->
+                        </div>
+                        <span class="text-xl font-medium text-gray-600 bg-gray-100 px-4 py-2 rounded-lg">@</span>
+                        <select
+                            id="customDomainDropdown"
+                            class="flex-1 p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent shadow-sm text-gray-700 w-full bg-white hover:border-green-300 transition-colors duration-200"
+                        >
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                        <button
+                            id="generateCustomBtn"
+                            class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 w-full lg:w-auto flex items-center justify-center space-x-2"
+                        >
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                            <span>Hasilkan Alamat</span>
+                        </button>
+                    </div>
+                    <div id="customResults" class="bg-gray-50 p-6 rounded-2xl border border-gray-200 min-h-[200px] custom-scrollbar max-h-80 overflow-y-auto">
+                        <div class="flex flex-col items-center justify-center py-12">
+                            <svg class="h-12 w-12 text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.44 7.89-4.44M21 8v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8m18 0l-9 5-9-5"/>
+                            </svg>
+                            <p class="text-gray-500 text-center">Hasil akan muncul di sini</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12 mt-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center">
+                <!-- Creator Info -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        Dibuat oleh: FongStudio
+                    </h3>
+                    <p class="text-gray-400">
+                        Solusi kreatif untuk kebutuhan digital Anda
+                    </p>
+                </div>
+
+                <!-- Social Media Icons -->
+                <div class="flex justify-center space-x-6 mb-8">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/+6285755811488" target="_blank" rel="noopener noreferrer" 
+                       class="bg-green-500 hover:bg-green-600 p-3 rounded-full text-white transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" 
+                       title="WhatsApp">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/fongstudio83" target="_blank" rel="noopener noreferrer" 
+                       class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-3 rounded-full text-white transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" 
+                       title="Instagram">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987s11.987-5.367 11.987-11.987C24.014 5.367 18.647.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.926 3.708 13.775 3.708 12.478s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.323c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.404c-.315 0-.595-.122-.807-.315-.21-.21-.315-.49-.315-.807s.105-.595.315-.807c.21-.21.49-.315.807-.315s.595.105.807.315c.21.21.315.49.315.807s-.105.595-.315.807c-.21.193-.49.315-.807.315zm-3.832 9.404c-1.297 0-2.448-.49-3.323-1.297-.928-.875-1.418-2.026-1.418-3.323s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.323c-.875.807-2.026 1.297-3.323 1.297z"/>
+                        </svg>
+                    </a>
+
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com/@fongstudio83" target="_blank" rel="noopener noreferrer" 
+                       class="bg-black hover:bg-gray-800 p-3 rounded-full text-white transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" 
+                       title="TikTok">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://facebook.com/mr.yoex" target="_blank" rel="noopener noreferrer" 
+                       class="bg-blue-600 hover:bg-blue-700 p-3 rounded-full text-white transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" 
+                       title="Facebook">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://youtube.com/@fongstudio83" target="_blank" rel="noopener noreferrer" 
+                       class="bg-red-600 hover:bg-red-700 p-3 rounded-full text-white transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" 
+                       title="YouTube">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="border-t border-gray-700 pt-6">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 FongStudio. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Message Box -->
+    <div id="messageBox" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 backdrop-blur-sm hidden">
+        <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-sm w-full text-center transform transition-all duration-300 scale-100">
+            <div class="flex justify-center mb-4">
+                <div class="bg-green-100 p-3 rounded-full">
+                    <svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+            </div>
+            <p id="messageText" class="text-lg font-semibold text-gray-800 mb-6"></p>
+            <button id="closeMessageBtn" class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Oke
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Data for dropdowns
+        const gmailUsernames = [
+            "tortusiji", "lorotortu", "telutortu"
+        ];
+
+        const customDomains = [
+            "chatjilacap.biz.id"
+        ];
+
+        // Generate random string for username
+        function generateRandomString(length) {
+            const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        // Generate email variations with dots
+        function generateEmailVariations(baseUsername, domain) {
+            const generatedEmails = new Set();
+            const cleanUsername = baseUsername.replace(/\./g, '').toLowerCase();
+
+            function generateDotCombinations(prefix, suffix) {
+                if (suffix.length === 0) {
+                    generatedEmails.add(`${prefix}@${domain}`);
+                    return;
+                }
+
+                generateDotCombinations(prefix + suffix[0], suffix.substring(1));
+
+                if (prefix.length > 0) {
+                    generateDotCombinations(prefix + '.' + suffix[0], suffix.substring(1));
+                }
+            }
+
+            if (cleanUsername.length > 0) {
+                generateDotCombinations(cleanUsername[0], cleanUsername.substring(1));
+            }
+
+            return Array.from(generatedEmails).sort();
+        }
+
+        // Show message box
+        function showMessage(message) {
+            const messageBox = document.getElementById('messageBox');
+            const messageText = document.getElementById('messageText');
+            messageText.textContent = message;
+            messageBox.classList.remove('hidden');
+        }
+
+        // Copy to clipboard
+        async function copyToClipboard(email) {
+            try {
+                await navigator.clipboard.writeText(email);
+                showMessage(`'${email}' telah disalin!`);
+            } catch (err) {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = email;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showMessage(`'${email}' telah disalin!`);
+            }
+        }
+
+        // Render email list
+        function renderEmailList(containerId, emails) {
+            const container = document.getElementById(containerId);
+            
+            if (emails.length === 0) {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center py-12">
+                        <svg class="h-12 w-12 text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.44 7.89-4.44M21 8v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8m18 0l-9 5-9-5"/>
+                        </svg>
+                        <p class="text-gray-500 text-center">Hasil akan muncul di sini</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const emailsHtml = emails.map(email => `
+                <div class="group flex items-center justify-between bg-gradient-to-r from-gray-50 to-gray-100 hover:from-blue-50 hover:to-indigo-50 p-4 rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-md">
+                    <span class="text-gray-800 text-sm font-medium break-all flex-1 mr-3">${email}</span>
+                    <button onclick="copyToClipboard('${email}')" class="p-2 bg-blue-100 hover:bg-blue-200 rounded-lg transition-all duration-200 transform hover:scale-110 group-hover:bg-blue-200" title="Salin email">
+                        <svg class="h-4 w-4 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+                        </svg>
+                    </button>
+                </div>
+            `).join('');
+
+            container.innerHTML = `<div class="space-y-3">${emailsHtml}</div>`;
+        }
+
+        // Populate dropdowns
+        function populateDropdown(dropdownId, options) {
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.innerHTML = options.map(option => 
+                `<option value="${option}">${option}</option>`
+            ).join('');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            populateDropdown('gmailDropdown', gmailUsernames);
+            populateDropdown('customDomainDropdown', customDomains);
+            document.getElementById('customUsernameDisplay').textContent = generateRandomString(10);
+
+            // Event listeners
+            document.getElementById('checkInboxBtn').addEventListener('click', function() {
+                window.open('https://mail.google.com/mail/u/0/#inbox', '_blank');
+            });
+
+            document.getElementById('generateDotsBtn').addEventListener('click', function() {
+                const selectedUsername = document.getElementById('gmailDropdown').value.trim();
+                if (!selectedUsername) {
+                    showMessage("Silakan pilih nama pengguna Gmail dari dropdown.");
+                    return;
+                }
+                const results = generateEmailVariations(selectedUsername, 'gmail.com');
+                renderEmailList('dotResults', results);
+            });
+
+            document.getElementById('randomUsernameBtn').addEventListener('click', function() {
+                document.getElementById('customUsernameDisplay').textContent = generateRandomString(10);
+                renderEmailList('customResults', []);
+            });
+
+            document.getElementById('generateCustomBtn').addEventListener('click', function() {
+                const customUsername = document.getElementById('customUsernameDisplay').textContent.trim();
+                const selectedDomain = document.getElementById('customDomainDropdown').value.trim();
+                
+                if (!customUsername || !selectedDomain) {
+                    showMessage("Silakan hasilkan nama pengguna acak DAN pilih domain kustom.");
+                    return;
+                }
+                
+                const results = generateEmailVariations(customUsername, selectedDomain);
+                renderEmailList('customResults', results);
+            });
+
+            document.getElementById('closeMessageBtn').addEventListener('click', function() {
+                document.getElementById('messageBox').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
